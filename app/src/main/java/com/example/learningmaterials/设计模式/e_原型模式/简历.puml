@@ -1,0 +1,22 @@
+@startuml
+
+class Resume{
+个人简历
+--
++Clone(): Object
++设置个人信息 (String: sex, String: age)
++设置工作经历 (String: timeArea, String: company)
++显示()
+}
+
+class WorkExperience{
++工作时间段: String
++公司: String
+{method} +Clone(): Object
+}
+
+ICloneable ()-- Resume
+Resume "1" *-> "*" WorkExperience
+ICloneable ()-- WorkExperience
+
+@enduml

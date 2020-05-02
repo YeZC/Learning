@@ -1,0 +1,62 @@
+@startuml
+title 事件分发流程
+header written by yzc
+footer written by yzc
+hnote over Activity :点击事件发生调用dispatchTouchEvent
+group Activity#superDispatchTouchEvent
+    Activity ->o PhoneWindow : superDispatchTouchEvent
+    group PhoneWindow#superDispatchTouchEvent
+    note over PhoneWindow : PhoneWindow：Window的唯一实现类
+    note over DecorView : 根View，一般为ViewGroup
+            PhoneWindow -> DecorView : dispatchTouchEvent
+        group ViewGroup#dispatchTouchEvent
+            hnote over DecorView : 1.当前ViewGroup拦截事件并处理
+            group ViewGroup#onInterceptTouchEvent
+                    else 如果设置了onTouchListener
+                    group ViewGroup#onTouch
+                    hnote over DecorView : onTouch会调用,返回true
+                    |||
+                    end
+                    else 没有设置onTouchlistener ｜ onTouch返回false
+                    group ViewGroup#onTouchEvent
+                    hnote over DecorView : 如果设置OnClickListener\nonClick方法被调用
+                    end
+            end
+            DecorView ->x DecorView : 返回false，ViewGroup不拦截事件
+                    hnote over DecorView : 2.当前View不拦截,事件\n向下分发
+                else 判断子元素是否能接收到事件\n(1)子元素是否在播放动画\n(2)点击事件的坐标是否落在子元素区域范围内
+                group ViewGroup#dispatchTransformedTouchEvent
+                hnote over DecorView : 如果view != null
+                    DecorView -> View : dispatchTouchEvent
+                    group View#dispatchdTouchEvent
+                    else 是否设置了onTouchListener
+                        group View#onTouch
+                        hnote over View : onTouch会调用,返回true
+                        |||
+                        end
+                        else 没有设置onTouchlistener ｜ onTouch返回false
+                        group View#onTouchEvent
+                        hnote over View : 只要CLICKABLE ｜ LONG_CLICKABLE = true\n就会消耗事件，与visible=DISABLE无关
+                        |||
+                        View -> View : 当ACTION_UP事件发生\nperfromClick方法被调用
+                            group View#perfromClick
+                            else 如果设置OnClickListener
+                                group View#onClick
+                                View -> View :
+                                end
+                            end
+                        end
+                    end
+                    View -> DecorView : 子View处理事件,返回true
+                end
+                    hnote over DecorView : 1.返回 true,mFirstTouchTarget赋值\n跳出ViewGroup#dispatchTouchEvent
+                    hnote over DecorView : 1.返回 false,继续传递给下一次View
+        end
+    DecorView -> PhoneWindow : 返回false没有View处理事件
+    end
+PhoneWindow -> Activity : 返回false没有View处理事件
+end
+hnote over Activity : 调用onTouchEvent
+
+
+@enduml

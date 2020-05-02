@@ -1,0 +1,46 @@
+@startuml
+header written by yzc
+footer written by yzc
+note over Client, Server
+    SYN：发起一个连接
+    ACK：回复
+    RST：重新连接
+    FIN：结束连接
+endnote
+
+note over Client, Server
+    **1.**一开始客户端和服务端都处于 CLOSED 状态
+endnote
+hnote over Client, Server #FFAAAA : **CLOSED**
+autonumber 2 "<b>."
+Server -> Server : 先是服务端主动监听某个端口
+hnote over Server #FFAAAA : **LISTEN**
+Client -> Server : 客户端主动发起连接 <color #red>SYN, req=x</color>
+hnote over Client #FFAAAA : **SYN_SENT**
+Server -> Client : 服务端收到发起的连接，返回 <color #red>SYN, req=y, ack=x+1</color>
+hnote over Server #FFAAAA : **SYN_RCVD**
+Client -> Server : 回应服务端的 ACK ，发送 <color #red>ACK, req=x+1, ack=y+1</color>
+autonumber stop
+Client --> Server : 建立连接后伴随着第一次请求
+hnote over Client #FFAAAA : **ESTABLISHED**
+hnote over Server #FFAAAA : **ESTABLISHED**
+Client <--> Server : **数据传输**
+|||
+Client <--> Server
+Client <--> Server
+Client <--> Server
+|||
+hnote over Client, Server #FFAAAA : **ESTABLISHED**
+Client -> Server : 客户端主动断开连接 <color #red>FIN, seq=p</color>
+hnote over Client #FFAAAA : **FIN_WAIT_1**
+Server -> Client : 服务端收到断开连接，返回 <color #red>ACK, ack=p+1</color>
+hnote over Server #FFAAAA : **CLOSED_WAIT**
+hnote over Client #FFAAAA : **FIN_WAIT_2**
+Server -> Client : 服务端发起断开连接 <color #red>FIN, ACK, seq=q, ack=p+1</color>
+hnote over Client #FFAAAA : **LAST_ACK**
+Client -> Server : 客户端收到断开连接 <color #red>ACK, ack=q+1</color>
+hnote over Client #FFAAAA : **TIME_WAIT** \n(等待 2MSL)\nMSL报文最大生存时间
+hnote over Client, Server #FFAAAA : **CLOSED**
+
+
+@enduml

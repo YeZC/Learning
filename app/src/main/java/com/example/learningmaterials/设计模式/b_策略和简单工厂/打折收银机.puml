@@ -1,0 +1,36 @@
+@startuml
+
+class DiscountFactory{
+{field} 打折方式
+-- field --
+Discount : discount
+--
+{method} createDiscount()
+}
+
+abstract class Discount{
+{field} money : Double
+{method} getResult()
+}
+
+class NormalDiscount{
+{field} 正常收费
+{method} getResult()
+}
+
+class ReturnDiscount{
+{field} 满减收费
+{method} getResult()
+}
+
+class RebaseDiscount{
+{field} 折扣收费
+{method} getResult()
+}
+
+DiscountFactory --> Discount
+Discount <|-- NormalDiscount
+Discount <|-- ReturnDiscount
+Discount <|-- RebaseDiscount
+
+@enduml

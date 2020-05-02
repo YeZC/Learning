@@ -1,0 +1,31 @@
+@startuml
+
+abstract class TestPaper{
+--
++试题一()
++试题二()
++试题三()
+
++答案一()
++答案二()
++答案三()
+}
+
+class StudentATestPaper{
+--
++答案一()
++答案二()
++答案三()
+}
+
+class StudentBTestPaper{
+--
++答案一()
++答案二()
++答案三()
+}
+
+TestPaper <|-- StudentATestPaper
+TestPaper <|-- StudentBTestPaper
+
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+
+abstract class Person{
+{method} 形象展示
+}
+
+class Costume{
+{method} 形象展示
+}
+
+class TShirt{
+{field} 衬衫
+{method} 形象展示
+}
+
+class CasualPants{
+{field} 休闲裤
+{method} 形象展示
+}
+
+class CasualShoes{
+{field} 休闲鞋
+{method} 形象展示
+}
+
+class BusinessSuit{
+{field} 西装
+{method} 形象展示
+}
+
+class Necktie{
+{field} 领带
+{method} 形象展示
+}
+
+class LeatherShoes{
+{field} 皮鞋
+{method} 形象展示
+}
+
+Person <|-- Costume
+Costume <|-- TShirt
+Costume <|-- CasualPants
+Costume <|-- CasualShoes
+Costume <|-- BusinessSuit
+Costume <|-- Necktie
+Costume <|-- LeatherShoes
+
+@enduml

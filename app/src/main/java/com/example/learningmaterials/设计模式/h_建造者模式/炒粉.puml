@@ -1,0 +1,45 @@
+@startuml
+header written by yzc
+footer written by yzc
+
+interface CookBuilder {
+void pushStapleFood() 放主食
+void pushEgg() 放鸡蛋
+void pushSoysauce() 放酱油
+Food getFood() 获取产物
+}
+
+class FoodBuilder1 {
+蛋炒饭原料
+}
+class FoodBuilder2 {
+炒粉原料
+}
+
+class CookBookDirector{
+cook() 做菜
+}
+
+class Food{
+}
+
+class 蛋炒饭{
+蛋炒饭
+}
+
+class 炒粉{
+炒粉
+}
+
+hide 蛋炒饭 members
+hide 炒粉 members
+
+CookBookDirector *-> CookBuilder
+CookBuilder <|-- FoodBuilder1
+CookBuilder <|-- FoodBuilder2
+FoodBuilder1 ..> Food
+FoodBuilder2 ..> Food
+Food -- 蛋炒饭
+Food -- 炒粉
+
+@enduml
