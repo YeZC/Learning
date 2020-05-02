@@ -2,8 +2,11 @@
 .idea
 */build
 *.iml
-/local.properties
 
+
+*.apk
+*.ap_
+*.dex
 
 .DS_Store
 /captures
