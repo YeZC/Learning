@@ -4,7 +4,6 @@ app/build
 *.iml
 /local.properties
 
-
 *.apk
 *.ap_
 *.dex
