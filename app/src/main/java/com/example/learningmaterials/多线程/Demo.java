@@ -47,7 +47,7 @@ public class Demo {
     }
 
     public static Map<String, Point> initData(){
-        HashMap map = new HashMap();
+        HashMap<String, Point> map = new HashMap<String, Point>();
         for (int i = 0; i < 100; i++) {
             int x = new Random().nextInt(100);
             int y = new Random().nextInt(100);

@@ -3,7 +3,7 @@
 app/build
 *.iml
 /local.properties
-
+/build
 *.apk
 *.ap_
 *.dex

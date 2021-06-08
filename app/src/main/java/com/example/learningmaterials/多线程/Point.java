@@ -1,5 +1,7 @@
 package com.example.learningmaterials.多线程;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Point {
     public final int x, y;
 
@@ -8,6 +10,7 @@ public class Point {
         this.y = y;
     }
 
+    @NotNull
     @Override
     public String toString() {
         return "Point{" +
