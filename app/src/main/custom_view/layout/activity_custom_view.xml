@@ -15,12 +15,25 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"/>-->
 
+
+
 <!--    Xfermode-->
 <!--    <com.example.learningmaterials.customView.drawing.view.AvatarView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"/>-->
 
 <!--    <com.example.learningmaterials.customView.drawing.view.XfermodeView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+
+
+<!--    文字测量-->
+<!--    <com.example.learningmaterials.customView.drawing.view.SportView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+<!--    <com.example.learningmaterials.customView.drawing.view.MultilineTextView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"/>-->
 

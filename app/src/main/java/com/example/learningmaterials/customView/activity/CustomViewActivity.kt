@@ -9,6 +9,7 @@ class CustomViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // 图形的位置和尺寸测量
         // Xfermode
+        // 文字测量
         setContentView(R.layout.activity_custom_view)
     }
 

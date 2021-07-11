@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.example.learningmaterials.customView.drawing.dp
 
-val RADIUS = 100f.dp
+private val RADIUS = 100f.dp
 class TestView(context: Context?, attrs: AttributeSet?) :
     View(context, attrs) {
 
