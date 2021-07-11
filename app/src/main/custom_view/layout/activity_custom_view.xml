@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customView.activity.CustomViewActivity">
+
+<!--    图形的位置和尺寸测量-->
+<!--    <com.example.learningmaterials.customView.drawing.view.PieView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+<!--    <com.example.learningmaterials.customView.drawing.view.DashBoardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+<!--    Xfermode-->
+<!--    <com.example.learningmaterials.customView.drawing.view.AvatarView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+<!--    <com.example.learningmaterials.customView.drawing.view.XfermodeView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
