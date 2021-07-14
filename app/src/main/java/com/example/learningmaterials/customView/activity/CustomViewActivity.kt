@@ -10,6 +10,7 @@ class CustomViewActivity : AppCompatActivity() {
         // 图形的位置和尺寸测量
         // Xfermode
         // 文字测量
+        // 范围裁切和几何变换
         setContentView(R.layout.activity_custom_view)
     }
 

@@ -37,4 +37,11 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"/>-->
 
+
+
+<!--    范围裁切和几何变换-->
+    <com.example.learningmaterials.customView.drawing.view.CameraView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
