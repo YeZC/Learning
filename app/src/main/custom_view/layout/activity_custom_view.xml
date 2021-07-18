@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".customView.activity.CustomViewActivity">
 
 <!--    图形的位置和尺寸测量-->
@@ -40,8 +41,37 @@
 
 
 <!--    范围裁切和几何变换-->
-    <com.example.learningmaterials.customView.drawing.view.CameraView
+<!--    <com.example.learningmaterials.customView.drawing.view.CameraView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+
+
+<!--    属性动画和硬件加速-->
+<!--    <View-->
+<!--        android:id="@+id/v_view"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/ic_avatar"/>-->
+
+<!--    <com.example.learningmaterials.customView.drawing.view.CircleView-->
+<!--        android:id="@+id/v_circle_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+<!--    <com.example.learningmaterials.customView.drawing.view.CameraView2-->
+<!--        android:id="@+id/v_camera_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+<!--    <com.example.learningmaterials.customView.drawing.view.PointFView-->
+<!--        android:id="@+id/v_point_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+    <com.example.learningmaterials.customView.drawing.view.ProvincView
+        android:id="@+id/v_province_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
