@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".customView.activity.CustomViewActivity">
+    tools:context=".customView.activity.DrawActivity">
 
 <!--    图形的位置和尺寸测量-->
 <!--    <com.example.learningmaterials.customView.drawing.view.PieView-->
@@ -69,9 +69,16 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"/>-->
 
-    <com.example.learningmaterials.customView.drawing.view.ProvincView
-        android:id="@+id/v_province_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<!--    <com.example.learningmaterials.customView.drawing.view.ProvincView-->
+<!--        android:id="@+id/v_province_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+
+
+<!--    Bitmap & Drawable-->
+    <com.example.learningmaterials.customView.drawing.view.DrawableView
+        android:layout_width="300dp"
+        android:layout_height="400dp"/>
 
 </LinearLayout>

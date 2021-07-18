@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.learningmaterials.customView.activity.CustomViewActivity
+import com.example.learningmaterials.customView.activity.DrawActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.bt_customview_activity).apply {
             setOnClickListener {
-                startActivity(Intent(context, CustomViewActivity::class.java))
+                startActivity(Intent(context, DrawActivity::class.java))
             }
             performClick()
         }

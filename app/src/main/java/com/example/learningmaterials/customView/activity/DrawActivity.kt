@@ -10,7 +10,7 @@ import com.example.learningmaterials.customView.drawing.dp
 import com.example.learningmaterials.customView.drawing.view.ProvinceEvaluator
 import kotlinx.android.synthetic.main.activity_custom_view.*
 
-class CustomViewActivity : AppCompatActivity() {
+class DrawActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 图形的位置和尺寸测量
@@ -100,14 +100,13 @@ class CustomViewActivity : AppCompatActivity() {
 
 
 
-        val animator = ObjectAnimator.ofObject(v_province_view,
-            "province", ProvinceEvaluator(), "澳门")
-        animator.apply {
-            startDelay = 1_000
-            duration = 4_000
-            start()
-        }
-        // 1:34:00
+//        val animator = ObjectAnimator.ofObject(v_province_view,
+//            "province", ProvinceEvaluator(), "澳门")
+//        animator.apply {
+//            startDelay = 1_000
+//            duration = 4_000
+//            start()
+//        }
     }
 
     class PointFEvaluator : TypeEvaluator<PointF> {
