@@ -1,2 +1,7 @@
 include ':app'
 rootProject.name='LearningMaterials'
+
+include ':okhttp'
+project(':okhttp').projectDir = new File(settingsDir, 'source-code-analysis\\okhttp')
+include ':retrofit'
+project(':retrofit').projectDir = new File(settingsDir, 'source-code-analysis\\retrofit')
