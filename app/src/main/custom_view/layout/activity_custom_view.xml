@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context=".customView.activity.DrawActivity">
 
 <!--    图形的位置和尺寸测量-->
@@ -77,8 +77,22 @@
 
 
 <!--    Bitmap & Drawable-->
-    <com.example.learningmaterials.customView.drawing.view.DrawableView
-        android:layout_width="300dp"
-        android:layout_height="400dp"/>
+<!--    <com.example.learningmaterials.customView.drawing.view.DrawableView-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="400dp"/>-->
+
+
+
+<!--    MeterialEditText-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#30000000">
+        <com.example.learningmaterials.customView.drawing.view.MeterialEditText
+            app:useFloatingLabel="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"/>
+    </FrameLayout>
 
 </LinearLayout>

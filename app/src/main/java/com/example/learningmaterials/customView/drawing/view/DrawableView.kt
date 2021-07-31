@@ -2,8 +2,6 @@ package com.example.learningmaterials.customView.drawing.view
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
 import android.view.View
 import com.example.learningmaterials.customView.drawing.dp

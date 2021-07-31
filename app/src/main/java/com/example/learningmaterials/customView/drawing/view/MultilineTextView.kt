@@ -2,16 +2,11 @@ package com.example.learningmaterials.customView.drawing.view
 
 import android.content.Context
 import android.graphics.*
-import android.text.Layout
-import android.text.StaticLayout
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
 import com.example.learningmaterials.R
 import com.example.learningmaterials.customView.drawing.dp
-import kotlin.math.cos
-import kotlin.math.sin
 
 private val IMAGE_SIZE = 150.dp
 private val IMAGE_PADDING = 50.dp

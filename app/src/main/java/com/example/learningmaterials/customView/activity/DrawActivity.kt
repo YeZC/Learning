@@ -3,12 +3,8 @@ package com.example.learningmaterials.customView.activity
 import android.animation.*
 import android.graphics.PointF
 import android.os.Bundle
-import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learningmaterials.R
-import com.example.learningmaterials.customView.drawing.dp
-import com.example.learningmaterials.customView.drawing.view.ProvinceEvaluator
-import kotlinx.android.synthetic.main.activity_custom_view.*
 
 class DrawActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.example.learningmaterials.R
 import com.example.learningmaterials.customView.drawing.dp
 
 class CircleView(context: Context?, attrs: AttributeSet?) :
