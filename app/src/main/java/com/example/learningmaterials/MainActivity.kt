@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.learningmaterials.customView.activity.DrawActivity
+import com.example.learningmaterials.custom_view.activity.DrawActivity
 
 class MainActivity : AppCompatActivity() {
 

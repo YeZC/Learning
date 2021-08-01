@@ -1,9 +1,9 @@
-package com.example.learningmaterials.customView.drawing.drawable
+package com.example.learningmaterials.custom_view.drawing.drawable
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.toColorInt
-import com.example.learningmaterials.customView.drawing.dp
+import com.example.learningmaterials.custom_view.dp
 
 private val INTERVAL = 50.dp
 

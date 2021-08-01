@@ -1,4 +1,4 @@
-package com.example.learningmaterials.customView.drawing.view
+package com.example.learningmaterials.custom_view.drawing.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.graphics.PointF
 import android.util.AttributeSet
 import android.view.View
-import com.example.learningmaterials.customView.drawing.dp
+import com.example.learningmaterials.custom_view.dp
 
 class PointFView(context: Context?, attrs: AttributeSet?) :
     View(context, attrs) {

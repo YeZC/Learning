@@ -1,10 +1,10 @@
-package com.example.learningmaterials.customView.drawing.view
+package com.example.learningmaterials.custom_view.drawing.view
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.example.learningmaterials.customView.drawing.dp
+import com.example.learningmaterials.custom_view.dp
 
 private val CIRCLE_COLOR = Color.parseColor("#90A4AE")
 private val HIGHLIGHT_COLOR = Color.parseColor("#FF4081")

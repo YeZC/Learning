@@ -1,4 +1,4 @@
-package com.example.learningmaterials.customView.drawing.view
+package com.example.learningmaterials.custom_view.drawing.view
 
 import android.animation.ObjectAnimator
 import android.content.Context
@@ -7,7 +7,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 import com.example.learningmaterials.R
-import com.example.learningmaterials.customView.drawing.dp
+import com.example.learningmaterials.custom_view.dp
 
 private val TEXT_SIZE = 12.dp
 private val TEXT_MARGIN = 8.dp

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".customView.activity.DrawActivity">
+    tools:context=".custom_view.activity.DrawActivity">
 
 <!--    图形的位置和尺寸测量-->
 <!--    <com.example.learningmaterials.customView.drawing.view.PieView-->
@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#30000000">
-        <com.example.learningmaterials.customView.drawing.view.MeterialEditText
+        <com.example.learningmaterials.custom_view.drawing.view.MeterialEditText
             app:useFloatingLabel="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

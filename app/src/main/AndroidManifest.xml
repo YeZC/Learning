@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 
-        <activity android:name=".customView.activity.DrawActivity"></activity>
+        <activity android:name=".custom_view.activity.DrawActivity"></activity>
 
         <activity android:name=".MainActivity">
             <intent-filter>

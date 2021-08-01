@@ -1,4 +1,4 @@
-package com.example.learningmaterials.customView.drawing
+package com.example.learningmaterials.custom_view
 
 import android.content.res.Resources
 import android.util.TypedValue

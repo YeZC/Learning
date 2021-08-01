@@ -1,11 +1,11 @@
-package com.example.learningmaterials.customView.drawing.view
+package com.example.learningmaterials.custom_view.drawing.view
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.example.learningmaterials.R
-import com.example.learningmaterials.customView.drawing.dp
+import com.example.learningmaterials.custom_view.dp
 
 private val BITMAP_SIZE = 200.dp
 private val BITMAP_PADDING = 100.dp

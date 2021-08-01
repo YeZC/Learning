@@ -1,4 +1,4 @@
-package com.example.learningmaterials.customView.drawing.view
+package com.example.learningmaterials.custom_view.drawing.view
 
 import android.animation.TypeEvaluator
 import android.content.Context
@@ -6,7 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.example.learningmaterials.customView.drawing.dp
+import com.example.learningmaterials.custom_view.dp
 
 private val provinces = listOf<String>(
     "北京市",
