@@ -13,7 +13,7 @@ class DrawActivity : AppCompatActivity() {
         // Xfermode
         // 文字测量
         // 范围裁切和几何变换
-        setContentView(R.layout.activity_custom_view)
+        setContentView(R.layout.activity_draw)
 
         // 属性动画和硬件加速
 //        v_view.animate()
