@@ -23,13 +23,16 @@ class CameraView(context: Context?, attrs: AttributeSet?) :
         //
         camera.rotateX(30f)
         val a = (BITMAP_PADDING + BITMAP_SIZE / 2f) / 72f
+        // 翻转
 //        camera.setLocation(0f, -0f, -12f)
+        // 斜切
         camera.setLocation(0f, 0f, -6 * resources.displayMetrics.density)
     }
 
     override fun onDraw(canvas: Canvas) {
 //        canvas.clipPath(clip)
 
+        // 翻转
 //        canvas.save()
 //        canvas.clipRect(BITMAP_PADDING, BITMAP_PADDING, BITMAP_PADDING + BITMAP_SIZE, BITMAP_PADDING + BITMAP_SIZE / 2f)
 //        canvas.drawBitmap(bitmap, BITMAP_PADDING, BITMAP_PADDING, paint)

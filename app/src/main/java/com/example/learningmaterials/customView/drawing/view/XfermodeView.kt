@@ -16,6 +16,7 @@ class XfermodeView(context: Context?, attrs: AttributeSet?) :
     private val squareBitmap = Bitmap.createBitmap(150f.dp.toInt(), 150f.dp.toInt(), Bitmap.Config.ARGB_8888)
 
     init {
+        // 注意绘制绘制范围
         val canvas = Canvas(circleBitmap)
         paint.color = Color.parseColor("#D81B60")
         canvas.drawOval(50f.dp, 0f.dp, 150f.dp, 100f.dp, paint)
