@@ -5,6 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".custom_view.activity.DrawActivity">
+    tools:context=".custom_view.activity.LayoutActivity">
+
+
+<!--    <com.example.learningmaterials.custom_view.layout.SquareImageView-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:src="@drawable/ic_avatar"/>-->
+
+<!--    <com.example.learningmaterials.custom_view.layout.CircleView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        />-->
+
+    <com.example.learningmaterials.custom_view.layout.TagLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.learningmaterials.custom_view.layout.ColorTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="广州市"/>
+
+        <com.example.learningmaterials.custom_view.layout.ColorTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京市"/>
+
+        <com.example.learningmaterials.custom_view.layout.ColorTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="天津市"/>
+
+        <com.example.learningmaterials.custom_view.layout.ColorTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海市"/>
+
+        <com.example.learningmaterials.custom_view.layout.ColorTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重庆市"/>
+
+        <com.example.learningmaterials.custom_view.layout.ColorTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="沧州市"/>
+
+        <com.example.learningmaterials.custom_view.layout.ColorTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="唐山市"/>
+
+        <com.example.learningmaterials.custom_view.layout.ColorTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="石家庄市"/>
+
+    </com.example.learningmaterials.custom_view.layout.TagLayout>
 
 </LinearLayout>

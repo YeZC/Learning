@@ -8,6 +8,8 @@ class LayoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_layout)
+        // 尺寸自定义
+        // Layout自定义布局
     }
 
 }
