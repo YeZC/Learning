@@ -7,6 +7,9 @@ import android.os.Process;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +17,11 @@ import java.lang.reflect.Field;
 
 import dalvik.system.BaseDexClassLoader;
 import dalvik.system.DexClassLoader;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okio.BufferedSink;
 import okio.Okio;
 import okio.Source;
@@ -45,7 +53,6 @@ public class HotfixMainActivity extends AppCompatActivity {
             showTV.setText(title.getTitle());
         });
         hotfixBT.setOnClickListener(v -> {
-            File apk = new File(getCacheDir() + "/hotfix.dex");
             if(!apk.exists()){
                 try(Source source = Okio.source(getAssets().open("hotfix.dex"));
                     BufferedSink sink = Okio.buffer(Okio.sink(apk))){
@@ -55,6 +62,28 @@ public class HotfixMainActivity extends AppCompatActivity {
                 }
             }
             // 点击后，杀掉程序
+
+            // part 2 下载补丁做热更新
+//            OkHttpClient client = new OkHttpClient();
+//            Request request = new Request.Builder()
+//                    .url("https://api.hencoder.com/patch/upload/hotfix.dex")
+//                    .build();
+//            client.newCall(request).enqueue(new Callback() {
+//                @Override
+//                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+//                    v.post(() -> Toast.makeText(HotfixMainActivity.this, "error", Toast.LENGTH_SHORT).show());
+//                }
+//
+//                @Override
+//                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+//                    try(BufferedSink sink = Okio.buffer(Okio.sink(apk))){
+//                        sink.write(response.body().bytes());
+//                    }catch (IOException e){
+//                        e.printStackTrace();
+//                    }
+//                    v.post(() -> Toast.makeText(HotfixMainActivity.this, "success", Toast.LENGTH_SHORT).show());
+//                }
+//            });
         });
 
         removeHotfixBT.setOnClickListener(v ->{
