@@ -45,25 +45,6 @@ public class HotfixMainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
-            try {
-                ClassLoader originLoader = getClassLoader();
-                DexClassLoader dexClassLoader = new DexClassLoader(apk.getPath(), getCacheDir().getPath(), null, null);
-                Class loaderClass = BaseDexClassLoader.class;
-                Field pathListField = loaderClass.getDeclaredField("pathList");
-                pathListField.setAccessible(true);
-                Object pathListObject = pathListField.get(dexClassLoader);
-
-                Class pathListClass = pathListObject.getClass();
-                Field dexElementsField = pathListClass.getDeclaredField("dexElements");
-                dexElementsField.setAccessible(true);
-                Object dexElementsObject = dexElementsField.get(pathListObject);
-
-                Object originPathListObject = pathListField.get(originLoader);
-                dexElementsField.set(originPathListObject, dexElementsObject);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
         });
     }
 }
