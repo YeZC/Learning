@@ -39,3 +39,29 @@ dependencies {
     implementation 'com.squareup.okio:okio:2.2.2'
 //    implementation 'com.squareup.okhttp3:okhttp:4.4.1'
 }
+
+/*
+1.patchPath 指定需要打dex的文件路径
+2.执行./gradlew hotfix
+*/
+def patchPath = 'com/yzc/hotfix/Title'
+task hotfix {
+    doLast {
+        exec {
+            commandLine 'rm', "-rf", './build/patch'
+        }
+        exec {
+            commandLine 'mkdir', './build/patch'
+        }
+        exec {
+            commandLine 'javac', "./src/main/java/${patchPath}.java", '-d', './build/patch'
+        }
+        exec {
+            commandLine '/Users/yezhaochu/Library/Android/sdk/build-tools/29.0.3/d8', "./build/patch/${patchPath}.class", '--output', './build/patch'
+        }
+        exec {
+            commandLine 'mv', "./build/patch/classes.dex", './build/patch/hotfix.dex'
+        }
+    }
+}
+
