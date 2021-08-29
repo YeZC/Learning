@@ -12,6 +12,7 @@
 
         <activity android:name=".custom_view.activity.DrawActivity"></activity>
         <activity android:name=".custom_view.activity.LayoutActivity"></activity>
+        <activity android:name=".custom_view.activity.TouchFeedbackActivity"></activity>
 
         <activity android:name=".MainActivity">
             <intent-filter>
