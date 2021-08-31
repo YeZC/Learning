@@ -9,9 +9,12 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.OverScroller
+import androidx.core.animation.doOnEnd
 import androidx.core.view.GestureDetectorCompat
+import androidx.core.view.ScaleGestureDetectorCompat
 import androidx.core.view.ViewCompat
 import com.example.learningmaterials.R
 import com.example.learningmaterials.custom_view.dp
@@ -21,7 +24,7 @@ import kotlin.math.min
 private val IMAGE_SIZE = 300.dp.toInt()
 private const val EXTRA_SCALE_FRACTOR = 1.5f
 class ScalableImageView(context: Context?, attrs: AttributeSet?)
-    : View(context, attrs), GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener, Runnable{
+    : View(context, attrs){
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val bitmap = getAvatar(IMAGE_SIZE)
@@ -29,7 +32,11 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?)
     private var originOffsetY = 0f
     private var smallScale = 0f
     private var bigScale = 0f
-    private val gestureDetectorCompat = GestureDetectorCompat(context, this)
+    private val myGestureListener = MyGestureListener()
+    private val gestureDetectorCompat = GestureDetectorCompat(context, myGestureListener)
+    private val scaleGestureListener = MyScaleGestureListener()
+    private val scaleGestureDetector = ScaleGestureDetector(context, scaleGestureListener)
+    private val flingRunnable = FlingRunnable()
     private var big = false
     private var scaleFraction = 0f
         set(value) {
@@ -60,7 +67,7 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?)
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        canvas.translate(offsetX, offsetY)
+        canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction)
         val scale = smallScale + (bigScale - smallScale) * scaleFraction
         canvas.scale(scale, scale, width / 2f, height / 2f)
         canvas.drawBitmap(bitmap, originOffsetX, originOffsetY, paint)
@@ -82,87 +89,89 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?)
         return gestureDetectorCompat.onTouchEvent(event)
     }
 
-    override fun onShowPress(e: MotionEvent?) {
+
+    private fun fixOffsets(){
+        offsetX = min(offsetX, (bitmap.width * bigScale - width) / 2)
+        offsetX = max(offsetX, - (bitmap.width * bigScale - width) / 2)
+        offsetY = min(offsetY, (bitmap.height * bigScale - height) / 2)
+        offsetY = max(offsetY, - (bitmap.height * bigScale - height) / 2)
     }
 
-    override fun onSingleTapUp(e: MotionEvent?): Boolean {
-        return false
-    }
-
-    override fun onDown(e: MotionEvent?): Boolean {
-        return true
-    }
-
-    override fun onFling(
-        downEvent: MotionEvent?,
-        currentEvent: MotionEvent?,
-        velocityX: Float,
-        velocityY: Float
-    ): Boolean {
-        if(big){
-            scroller.fling(
-                offsetX.toInt(), offsetY.toInt(), velocityX.toInt(), velocityY.toInt(),
-                (- (bitmap.width * bigScale - width) / 2).toInt(),
-                ((bitmap.width * bigScale - width) / 2).toInt(),
-                (- (bitmap.height * bigScale - height) / 2).toInt(),
-                ((bitmap.height * bigScale - height) / 2).toInt(),
-                40.dp.toInt(),
-                40.dp.toInt()
-            )
-            ViewCompat.postOnAnimation(this, this)
-        }
-        return false
-    }
-
-    override fun run() {
-        if (scroller.computeScrollOffset()) {
-            offsetX = scroller.currX.toFloat()
-            offsetY = scroller.currY.toFloat()
-            invalidate()
-            ViewCompat.postOnAnimation(this, this)
+    inner class FlingRunnable : Runnable {
+        override fun run() {
+            if (scroller.computeScrollOffset()) {
+                offsetX = scroller.currX.toFloat()
+                offsetY = scroller.currY.toFloat()
+                invalidate()
+                ViewCompat.postOnAnimation(this@ScalableImageView, this)
+            }
         }
     }
 
-    override fun onScroll(
-        downEvent: MotionEvent?,
-        currentEvent: MotionEvent?,
-        distanceX: Float,
-        distanceY: Float
-    ): Boolean {
-        if(big){
-            offsetX -= distanceX
-            offsetX = min(offsetX, (bitmap.width * bigScale - width) / 2)
-            offsetX = max(offsetX, - (bitmap.width * bigScale - width) / 2)
-            offsetY -= distanceY
-            offsetY = min(offsetY, (bitmap.height * bigScale - height) / 2)
-            offsetY = max(offsetY, - (bitmap.height * bigScale - height) / 2)
-            invalidate()
+    inner class MyGestureListener : GestureDetector.SimpleOnGestureListener() {
+
+        override fun onFling(
+            downEvent: MotionEvent?,
+            currentEvent: MotionEvent?,
+            velocityX: Float,
+            velocityY: Float
+        ): Boolean {
+            if(big){
+                scroller.fling(
+                    offsetX.toInt(), offsetY.toInt(), velocityX.toInt(), velocityY.toInt(),
+                    (- (bitmap.width * bigScale - width) / 2).toInt(),
+                    ((bitmap.width * bigScale - width) / 2).toInt(),
+                    (- (bitmap.height * bigScale - height) / 2).toInt(),
+                    ((bitmap.height * bigScale - height) / 2).toInt(),
+                    40.dp.toInt(),
+                    40.dp.toInt()
+                )
+                ViewCompat.postOnAnimation(this@ScalableImageView, flingRunnable)
+            }
+            return false
         }
-        return false
-    }
 
-
-
-    override fun onLongPress(e: MotionEvent?) {
-    }
-
-    override fun onDoubleTap(e: MotionEvent?): Boolean {
-        big = !big
-        if(big){
-            scaleAnimation.start()
-        }else{
-            scaleAnimation.reverse()
+        override fun onScroll(
+            downEvent: MotionEvent?,
+            currentEvent: MotionEvent?,
+            distanceX: Float,
+            distanceY: Float
+        ): Boolean {
+            if(big){
+                offsetX -= distanceX
+                offsetY -= distanceY
+                fixOffsets()
+                invalidate()
+            }
+            return false
         }
-        offsetX = 0f
-        offsetY = 0f
-        return true
+
+        override fun onDoubleTap(e: MotionEvent): Boolean {
+            big = !big
+            if(big){
+                offsetX = (e.x - width / 2f) * (1 - bigScale / smallScale)
+                offsetY = (e.y - height / 2f) * (1 - bigScale / smallScale)
+                fixOffsets()
+                scaleAnimation.start()
+            }else{
+                scaleAnimation.reverse()
+            }
+            return true
+        }
     }
 
-    override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
-        return false
-    }
+    inner class MyScaleGestureListener : ScaleGestureDetector.OnScaleGestureListener{
+        override fun onScaleBegin(detector: ScaleGestureDetector?): Boolean {
+            TODO("Not yet implemented")
+        }
 
-    override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
-        return false
+        override fun onScaleEnd(detector: ScaleGestureDetector?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onScale(detector: ScaleGestureDetector?): Boolean {
+            TODO("Not yet implemented")
+        }
+
     }
 }
