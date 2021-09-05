@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 //                startActivity(Intent(context, LayoutActivity::class.java))
                 // touch feedback
                 startActivity(Intent(context, TouchFeedbackActivity::class.java))
+                finish()
             }
             performClick()
         }

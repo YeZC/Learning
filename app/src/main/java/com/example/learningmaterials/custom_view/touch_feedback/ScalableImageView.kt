@@ -12,9 +12,7 @@ import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.OverScroller
-import androidx.core.animation.doOnEnd
 import androidx.core.view.GestureDetectorCompat
-import androidx.core.view.ScaleGestureDetectorCompat
 import androidx.core.view.ViewCompat
 import com.example.learningmaterials.R
 import com.example.learningmaterials.custom_view.dp
@@ -38,14 +36,13 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?)
     private val scaleGestureDetector = ScaleGestureDetector(context, scaleGestureListener)
     private val flingRunnable = FlingRunnable()
     private var big = false
-    private var scaleFraction = 0f
+    private var currentScale = 0f
         set(value) {
             field = value
             invalidate()
         }
-    private val scaleAnimation : ObjectAnimator by lazy {
-        ObjectAnimator.ofFloat(this, "scaleFraction", 0f, 1f)
-    }
+    private val scaleAnimation : ObjectAnimator = ObjectAnimator.ofFloat(this, "currentScale", smallScale, bigScale)
+
     private var offsetX = 0f
     private var offsetY = 0f
     private var scroller = OverScroller(context)
@@ -62,14 +59,16 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?)
             smallScale = height / bitmap.height.toFloat()
             bigScale = width / bitmap.width.toFloat() * EXTRA_SCALE_FRACTOR
         }
+        currentScale = smallScale
+        scaleAnimation.setFloatValues(smallScale, bigScale)
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
+        val scaleFraction = (currentScale - smallScale) / (bigScale - smallScale)
         canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction)
-        val scale = smallScale + (bigScale - smallScale) * scaleFraction
-        canvas.scale(scale, scale, width / 2f, height / 2f)
+        canvas.scale(currentScale, currentScale, width / 2f, height / 2f)
         canvas.drawBitmap(bitmap, originOffsetX, originOffsetY, paint)
     }
 
@@ -85,8 +84,12 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?)
         return BitmapFactory.decodeResource(resources, R.drawable.ic_avatar, options)
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return gestureDetectorCompat.onTouchEvent(event)
+    override  fun onTouchEvent(event: MotionEvent?): Boolean {
+        scaleGestureDetector.onTouchEvent(event)
+        if(!scaleGestureDetector.isInProgress){
+            gestureDetectorCompat.onTouchEvent(event)
+        }
+        return true
     }
 
 
@@ -109,6 +112,10 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?)
     }
 
     inner class MyGestureListener : GestureDetector.SimpleOnGestureListener() {
+
+        override fun onDown(e: MotionEvent?): Boolean {
+            return true
+        }
 
         override fun onFling(
             downEvent: MotionEvent?,
@@ -161,16 +168,24 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?)
     }
 
     inner class MyScaleGestureListener : ScaleGestureDetector.OnScaleGestureListener{
-        override fun onScaleBegin(detector: ScaleGestureDetector?): Boolean {
-            TODO("Not yet implemented")
+        override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
+            offsetX = (detector.focusX - width / 2f) * (1 - bigScale / smallScale)
+            offsetY = (detector.focusY - height / 2f) * (1 - bigScale / smallScale)
+            return true
         }
 
-        override fun onScaleEnd(detector: ScaleGestureDetector?) {
-            TODO("Not yet implemented")
+        override fun onScaleEnd(detector: ScaleGestureDetector) {
         }
 
-        override fun onScale(detector: ScaleGestureDetector?): Boolean {
-            TODO("Not yet implemented")
+        override fun onScale(detector: ScaleGestureDetector): Boolean {
+            val tempCurrentScale = currentScale * detector.scaleFactor
+            if(tempCurrentScale < smallScale || tempCurrentScale > bigScale){
+                return false
+            }else{
+                currentScale *= detector.scaleFactor
+                currentScale = currentScale.coerceAtLeast(smallScale).coerceAtMost(bigScale)
+                return true// 返回和上一次的比值
+            }
         }
 
     }
