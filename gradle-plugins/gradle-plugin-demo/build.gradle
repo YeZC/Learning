@@ -35,7 +35,7 @@ android {
 // 打印编译任务的源码类
 gradle.taskGraph.whenReady {
     it.allTasks.each { task ->
-        println "${task.name} : ${task.class.name - '_Decorated'}"
+        println "${task.name} :  ${task.class.name - '_Decorated'}"
     }
 }
 
@@ -47,6 +47,10 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     // gradle源码
+    // 调式gradle源码：
+    // 1.complieOnly依赖
+    // 2.Edit Configurations 增加 remote运行模式，运行debug
+    // 3.在Terminal 中执行 ./gradlew help/assembleDebug -Dorg.gradle.debug=true
 //    compileOnly 'com.android.tools.build:gradle:4.0.1'
 }
 
