@@ -1,5 +1,9 @@
 package com.example.learningmaterials.多线程与线程同步;
 
+import com.example.learningmaterials.multithreading.多线程与线程同步.Synchronized1Demo;
+import com.example.learningmaterials.multithreading.多线程与线程同步.Synchronized2Demo;
+import com.example.learningmaterials.multithreading.多线程与线程同步.Synchronized3Demo;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;

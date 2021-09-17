@@ -1,10 +1,12 @@
-package com.example.learningmaterials.多线程与线程同步;
+package com.example.learningmaterials.multithreading.多线程与线程同步;
+
+import com.example.learningmaterials.multithreading.TestDemo;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class ReadWriteLockDemo implements TestDemo{
+public class ReadWriteLockDemo implements TestDemo {
 
     private int x = 0;
     // 可重入锁

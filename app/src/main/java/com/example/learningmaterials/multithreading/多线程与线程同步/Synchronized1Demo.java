@@ -1,4 +1,6 @@
-package com.example.learningmaterials.多线程与线程同步;
+package com.example.learningmaterials.multithreading.多线程与线程同步;
+
+import com.example.learningmaterials.multithreading.TestDemo;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
