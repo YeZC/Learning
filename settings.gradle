@@ -1,3 +1,5 @@
+include ':binding-processor'
+include ':reflection-annotation'
 include ':hotfix'
 include ':app'
 rootProject.name='LearningMaterials'
