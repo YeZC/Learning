@@ -6,3 +6,6 @@ include ':okhttp'
 project(':okhttp').projectDir = new File(settingsDir, 'source-code-analysis\\okhttp')
 include ':retrofit'
 project(':retrofit').projectDir = new File(settingsDir, 'source-code-analysis\\retrofit')
+
+include ':gradle-plugin-demo'
+project(':gradle-plugin-demo').projectDir = new File(settingsDir, 'gradle-plugins\\gradle-plugin-demo')
