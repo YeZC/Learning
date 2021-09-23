@@ -9,6 +9,7 @@ import com.example.learningmaterials.architecture.mvp.MvpActivity
 import com.example.learningmaterials.architecture.mvvm.MvvmActivity
 import com.example.learningmaterials.custom_view.activity.DrawActivity
 import com.example.learningmaterials.custom_view.activity.LayoutActivity
+import com.example.learningmaterials.java.annotation_processing.AnnotationActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,12 +20,14 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.bt_customview_activity).apply {
             setOnClickListener {
 //                startActivity(Intent(context, DrawActivity::class.java))
-                startActivity(Intent(context, LayoutActivity::class.java))
+//                startActivity(Intent(context, LayoutActivity::class.java))
 
 
-                startActivity(Intent(context, MvcActivity::class.java))
-                startActivity(Intent(context, MvpActivity::class.java))
-                startActivity(Intent(context, MvvmActivity::class.java))
+//                startActivity(Intent(context, MvcActivity::class.java))
+//                startActivity(Intent(context, MvpActivity::class.java))
+//                startActivity(Intent(context, MvvmActivity::class.java))
+
+                startActivity(Intent(context, AnnotationActivity::class.java))
             }
             performClick()
         }
