@@ -7,6 +7,8 @@ import android.widget.Button
 import com.example.learningmaterials.architecture.mvc.MvcActivity
 import com.example.learningmaterials.architecture.mvp.MvpActivity
 import com.example.learningmaterials.architecture.mvvm.MvvmActivity
+import com.example.learningmaterials.custom_view.activity.DrawActivity
+import com.example.learningmaterials.custom_view.activity.LayoutActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
 //                startActivity(Intent(context, MvcActivity::class.java))
 //                startActivity(Intent(context, MvpActivity::class.java))
-                startActivity(Intent(context, MvvmActivity::class.java))
+//                startActivity(Intent(context, MvvmActivity::class.java))
             }
             performClick()
         }
