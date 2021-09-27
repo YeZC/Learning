@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.squareup.okio:okio:2.2.2'
 
     // annotation
-    implementation project(":reflection-annotation")
+    implementation project(":binding")
+    annotationProcessor project(":binding-processor")
 }
 

@@ -60,29 +60,29 @@ public class Main {
     // HandlerThread
     // IntentService
     static void asyncTask(){
-        MyAsyncTask asyncTask = new MyAsyncTask();
+//        MyAsyncTask asyncTask = new MyAsyncTask();
 //        asyncTask.execute()
     }
 
     // 没有static会发生内存泄漏 1.线程是GC Root对象 2.当MyAsyncTask生命周期比Activity长
-    static class MyAsyncTask extends AsyncTask {
-
-        @UiThread
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @WorkerThread
-        @Override
-        protected Object doInBackground(Object[] objects) {
-            return null;
-        }
-
-        @UiThread
-        @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-        }
-    }
+//    static class MyAsyncTask extends AsyncTask {
+//
+//        @UiThread
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @WorkerThread
+//        @Override
+//        protected Object doInBackground(Object[] objects) {
+//            return null;
+//        }
+//
+//        @UiThread
+//        @Override
+//        protected void onPostExecute(Object o) {
+//            super.onPostExecute(o);
+//        }
+//    }
 }

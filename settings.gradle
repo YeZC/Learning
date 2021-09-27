@@ -1,8 +1,7 @@
-include ':binding-processor'
-include ':reflection-annotation'
-include ':hotfix'
 include ':app'
 rootProject.name='LearningMaterials'
+
+include ':hotfix'
 
 include ':okhttp'
 project(':okhttp').projectDir = new File(settingsDir, 'source-code-analysis\\okhttp')
@@ -11,3 +10,10 @@ project(':retrofit').projectDir = new File(settingsDir, 'source-code-analysis\\r
 
 include ':gradle-plugin-demo'
 project(':gradle-plugin-demo').projectDir = new File(settingsDir, 'gradle-plugins\\gradle-plugin-demo')
+
+include ':binding-annotation'
+include ':binding-processor'
+include ':binding'
+project(':binding-annotation').projectDir = new File(settingsDir, 'binding-annotation-processor\\binding-annotation')
+project(':binding-processor').projectDir = new File(settingsDir, 'binding-annotation-processor\\binding-processor')
+project(':binding').projectDir = new File(settingsDir, 'binding-annotation-processor\\binding')
