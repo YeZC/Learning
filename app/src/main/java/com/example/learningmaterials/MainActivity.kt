@@ -4,11 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.learningmaterials.architecture.mvc.MvcActivity
-import com.example.learningmaterials.architecture.mvp.MvpActivity
-import com.example.learningmaterials.architecture.mvvm.MvvmActivity
-import com.example.learningmaterials.custom_view.activity.DrawActivity
-import com.example.learningmaterials.custom_view.activity.LayoutActivity
 import com.example.learningmaterials.java.annotation_processing.AnnotationActivity
 
 class MainActivity : AppCompatActivity() {

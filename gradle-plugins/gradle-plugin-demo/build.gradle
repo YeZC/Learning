@@ -33,11 +33,11 @@ android {
 }
 
 // 打印编译任务的源码类
-gradle.taskGraph.whenReady {
-    it.allTasks.each { task ->
-        println "${task.name} :  ${task.class.name - '_Decorated'}"
-    }
-}
+//gradle.taskGraph.whenReady {
+//    it.allTasks.each { task ->
+//        println "${task.name} :  ${task.class.name - '_Decorated'}"
+//    }
+//}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
