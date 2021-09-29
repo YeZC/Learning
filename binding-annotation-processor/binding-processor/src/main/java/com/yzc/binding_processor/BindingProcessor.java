@@ -14,6 +14,8 @@ import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 
@@ -29,22 +31,40 @@ public class BindingProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        String packageName = "com.example.learningmaterials.java.annotation_processing";
-        ClassName className = ClassName.get(packageName, "AnnotationActivityBinding");
-        TypeSpec buildClass = TypeSpec.classBuilder(className)
-                .addModifiers(Modifier.PUBLIC)
-                .addMethod(MethodSpec.constructorBuilder()
-                        .addModifiers(Modifier.PUBLIC)
-                        .addParameter(ClassName.get(packageName, "AnnotationActivity"), "activity")
-                        .addStatement("activity.textview = activity.findViewById(com.example.learningmaterials.R.id.textview1)")
-                        .build())
-                .build();
-        try {
-            JavaFile.builder(packageName, buildClass)
-                    .build()
-                    .writeTo(filer);
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (Element element : roundEnvironment.getRootElements()) {
+            String packageStr = element.getEnclosingElement().toString();
+            String classStr = element.getSimpleName().toString();
+            ClassName className = ClassName.get(packageStr, classStr + "Binding");
+            MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder()
+                    .addModifiers(Modifier.PUBLIC)
+                    .addParameter(ClassName.get(packageStr, classStr), "activity");
+            boolean hasBinding = false;
+
+            for (Element enclosedElement : element.getEnclosedElements()) {
+                if(enclosedElement.getKind() == ElementKind.FIELD){
+                    BindView bindView = enclosedElement.getAnnotation(BindView.class);
+                    if(bindView != null){
+                        hasBinding = true;
+                        constructorBuilder.addStatement("activity.$N = activity.findViewById($L)",
+                                enclosedElement.getSimpleName(), bindView.value());
+                    }
+                }
+            }
+
+            TypeSpec buildClass = TypeSpec.classBuilder(className)
+                    .addModifiers(Modifier.PUBLIC)
+                    .addMethod(constructorBuilder.build())
+                    .build();
+
+            if(hasBinding){
+                try {
+                    JavaFile.builder(packageStr, buildClass)
+                            .build()
+                            .writeTo(filer);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return false;
     }
