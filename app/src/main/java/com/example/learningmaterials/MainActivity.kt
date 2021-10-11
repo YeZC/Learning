@@ -19,12 +19,12 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.bt_customview_activity).apply {
             setOnClickListener {
 //                startActivity(Intent(context, DrawActivity::class.java))
-//                startActivity(Intent(context, LayoutActivity::class.java))
+                startActivity(Intent(context, LayoutActivity::class.java))
 
 
-//                startActivity(Intent(context, MvcActivity::class.java))
-//                startActivity(Intent(context, MvpActivity::class.java))
-//                startActivity(Intent(context, MvvmActivity::class.java))
+                startActivity(Intent(context, MvcActivity::class.java))
+                startActivity(Intent(context, MvpActivity::class.java))
+                startActivity(Intent(context, MvvmActivity::class.java))
             }
             performClick()
         }
