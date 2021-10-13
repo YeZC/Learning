@@ -1,6 +1,18 @@
+# Android Gradle Plugin(AGP)
+
+
+### gradle plugin开发
+1.在项目中新建module，命名为buildSrc，AS自动生成可使用的插件依赖
+2.继承Plugin<Project>编写插件任务、Extension用于build.gradle文件中配置插件参数、Transform干预代码从java -> class的过程
+3.resources中注册让插件生效
+4.build.grade中通过apply plugin: 'xxx'应用插件
+
+
+### 打包流程（粗略的手动打包流程）
 这个整理已 gradle-plugin-demo 为例手动使用工具打包apk的流程，
 打包目录为 gradle-plugins 下的 build文件：
 
+```
 // 产物位置
 cd gradle-plugins
 mkdir build
@@ -19,4 +31,10 @@ zip -j build/app-debug.apk build/classes.dex
 apksigner sign --ks ~/.android/debug.keystore build/app-debug.apk
 // 完了之后需要手动删除该文件夹
 // todo 最终包无法安装
+```
 
+### 调式gradle源码
+1.complieOnly依赖'com.android.tools.build:gradle:4.0.1'
+2.Edit Configurations 添加 remote运行模式
+3.在Terminal 中执行 ./gradlew assembleDebug -Dorg.gradle.debug=true
+4.点运行debug
